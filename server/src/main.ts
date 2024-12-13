@@ -34,6 +34,7 @@ async function bootstrap() {
   const swaggerOptions = new DocumentBuilder()
     .setTitle('QA')
     .setVersion('1.7.2')
+    .addServer(`https://qa-test123.railway.app`, 'Deployment')
     .addServer(`http://localhost:${PORT}`, 'Local')
     .addBearerAuth()
     .build();
