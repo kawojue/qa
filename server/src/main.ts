@@ -12,13 +12,12 @@ async function bootstrap() {
   PORT = config.port;
   const app = await NestFactory.create(AppModule);
 
-  // app.enableCors({
-  //   origin: ['http://localhost:3000', process.env.CLIENT_URL],
-  //   credentials: true,
-  //   optionsSuccessStatus: 200,
-  //   methods: 'GET,POST,DELETE,PATCH,PUT',
-  //   preflightContinue: false,
-  // });
+  app.enableCors({
+    origin: ['http://localhost:3000', 'https://qa-test123.vercel.app'],
+    credentials: true,
+    optionsSuccessStatus: 200,
+    methods: 'GET,POST,DELETE,PATCH,PUT',
+  });
 
   app.use(morgan('dev'));
   app.use(express.json({ limit: '5mb' }));
@@ -34,7 +33,7 @@ async function bootstrap() {
   const swaggerOptions = new DocumentBuilder()
     .setTitle('QA')
     .setVersion('1.7.2')
-    .addServer(`https://qa-test123.railway.app`, 'Deployment')
+    .addServer(`https://qa-test123.up.railway.app`, 'Deployment')
     .addServer(`http://localhost:${PORT}`, 'Local')
     .addBearerAuth()
     .build();
