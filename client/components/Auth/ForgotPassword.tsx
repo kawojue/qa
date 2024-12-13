@@ -70,8 +70,7 @@ export default function ForgotPasswordPage() {
                             id="email-description"
                             className="text-sm text-muted-foreground"
                         >
-                            We'll send a one-time password to this email
-                            address.
+                            {`We&#39;ll send a one-time password to this email address.`}
                         </p>
                     </div>
 
