@@ -12,13 +12,13 @@ async function bootstrap() {
   PORT = config.port;
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors({
-    origin: ['http://localhost:3000', process.env.CLIENT_URL],
-    credentials: true,
-    optionsSuccessStatus: 200,
-    methods: 'GET,POST,DELETE,PATCH,PUT',
-    preflightContinue: false,
-  });
+  // app.enableCors({
+  //   origin: ['http://localhost:3000', process.env.CLIENT_URL],
+  //   credentials: true,
+  //   optionsSuccessStatus: 200,
+  //   methods: 'GET,POST,DELETE,PATCH,PUT',
+  //   preflightContinue: false,
+  // });
 
   app.use(morgan('dev'));
   app.use(express.json({ limit: '5mb' }));
