@@ -14,10 +14,10 @@ export function TodoPage() {
     const router = useRouter();
 
     const [todos, setTodos] = useState<Todo[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [username, setUsername] = useState("User");
+    const [currentPage, setCurrentPage] = useState(1);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
     useEffect(() => {
         fetchTodos(currentPage);
@@ -38,24 +38,17 @@ export function TodoPage() {
     }, []);
 
     const fetchTodos = async (page: number) => {
-        try {
-            const { data } = await api.get(
-                `/todo?limit=${ITEMS_PER_PAGE}&page=${page}`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem(
-                            "token"
-                        )}`,
-                    },
-                }
-            );
+        const { data } = await api.get(
+            `/todo?limit=${ITEMS_PER_PAGE}&page=${page}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            }
+        );
 
-            setTodos(data.data.todos);
-            setTotalPages(data.data.meta.totalPages);
-        } catch (err) {
-            console.error(err);
-            throwError(err);
-        }
+        setTodos(data.data.todos);
+        setTotalPages(data.data.meta.totalPages);
     };
 
     const handleAddTodo = async (newTodo: Omit<Todo, "id">) => {

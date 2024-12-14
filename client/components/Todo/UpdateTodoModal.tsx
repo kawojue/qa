@@ -121,7 +121,7 @@ export function UpdateTodoModal({
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectItem value="PENDING">Pending</SelectItem>
-                                <SelectItem value="IN PROGRESS">
+                                <SelectItem value="IN_PROGRESS">
                                     In Progress
                                 </SelectItem>
                                 <SelectItem value="COMPLETED">
