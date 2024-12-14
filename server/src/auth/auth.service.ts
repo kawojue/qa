@@ -24,7 +24,7 @@ export class AuthService {
 
   private store = new Map<string, { count: number; expiry: Date }>();
 
-  async signup({ email, firstname, lastname, username, password }: SignupDTO) {
+  async signup({ email, firstName, lastName, username, password }: SignupDTO) {
     const findByEmail = await this.prisma.user.findUnique({
       where: { email },
     });
@@ -49,9 +49,9 @@ export class AuthService {
 
     return this.prisma.user.create({
       data: {
-        lastname,
+        lastName,
         password,
-        firstname,
+        firstName,
         username,
         email,
       },
@@ -137,7 +137,7 @@ export class AuthService {
         template: 'VerificationEmail',
         data: {
           code: otp,
-          firstName: user.firstname,
+          firstName: user.firstName,
           year: new Date().getFullYear(),
         },
       }),

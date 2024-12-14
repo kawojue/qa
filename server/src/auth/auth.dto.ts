@@ -33,7 +33,7 @@ export class SignupDTO extends EmailDTO {
   @IsString()
   @IsNotEmpty()
   @Transform(({ value }) => Misc.titleText(value))
-  firstname: string;
+  firstName: string;
 
   @ApiPropertyOptional({
     example: 'Doe',
@@ -41,7 +41,7 @@ export class SignupDTO extends EmailDTO {
   @IsString()
   @IsOptional()
   @Transform(({ value }) => Misc.titleText(value))
-  lastname?: string;
+  lastName?: string;
 }
 
 export class LoginDTO {
