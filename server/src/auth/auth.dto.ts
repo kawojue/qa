@@ -8,7 +8,7 @@ export class EmailDTO {
     example: 'email@email.com',
   })
   @IsEmail()
-  @Transform(({ value }) => Misc.formatEmail(value))
+  @Transform(({ value }) => Misc.toLowerCase(value))
   email: string;
 }
 
